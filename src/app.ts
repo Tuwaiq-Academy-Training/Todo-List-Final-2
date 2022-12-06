@@ -9,7 +9,7 @@ import path from 'path';
 const app = express();
 
 app.use(express.json());
-app.use(express.static('./client/build'));
+app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
 
 app.use(cors());
 
@@ -19,7 +19,6 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/todo', todoRouter);
 
 app.use((req, res, next) => {
-  console.log(path.join(__dirname, '..', 'client', 'build/index.html'));
   return res.sendFile(path.join(__dirname, '..', 'client', 'build/index.html'));
 });
 
