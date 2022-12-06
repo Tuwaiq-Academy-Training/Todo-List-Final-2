@@ -19,7 +19,8 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/todo', todoRouter);
 
 app.use((req, res, next) => {
-  return res.sendFile(path.join(__dirname, '../client/build/index.html'));
+  console.log(path.join(__dirname, '..', 'client', 'build/index.html'));
+  return res.sendFile(path.join(__dirname, '..', 'client', 'build/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
