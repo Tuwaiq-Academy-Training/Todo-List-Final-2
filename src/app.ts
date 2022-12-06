@@ -8,6 +8,7 @@ import cors from 'cors';
 const app = express();
 
 app.use(express.json());
+app.use(express.static('./client/build'));
 
 app.use(cors());
 
@@ -17,9 +18,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/todo', todoRouter);
 
 app.use((req, res, next) => {
-  return res.status(404).json({
-    message: 'Route not found ! ',
-  });
+  return res.sendFile('./client/build/index.html');
 });
 
 const PORT = process.env.PORT || 5000;
