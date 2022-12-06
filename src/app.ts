@@ -4,6 +4,7 @@ import authRouter from './routes/auth.route';
 import todoRouter from './routes/todo.route';
 import 'dotenv/config';
 import cors from 'cors';
+import path from 'path';
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/todo', todoRouter);
 
 app.use((req, res, next) => {
-  return res.sendFile('./client/build/index.html');
+  return res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
